@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maccccccccccccccccccccccccc</title>
+  <link rel="stylesheet" href="./dist/tailwind.css">
+  <link rel="stylesheet" href="./css/global.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+    integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+
+  <main class="main">
+    <section class="mt-5">
+      <div class="container flex">
+        <div class="product-left pt-[150px] w-[577px]">
+          <div class="product-box">
+            <div class="product-result w-[577px] h-[396px] relative overflow-hidden">
+              <div class="img-slider w-[500px] h-[396px] flex duration-300 ease-out">
+                <img class="img-result mx-[130px] w-[577px] h-[317px] object-contain"
+                  src="img/gold-1.jfif" alt="">
+                <img class="img-result mx-[130px] w-[577px] h-[317px] object-contain"
+                  src="img/gold-2.jfif" alt="">
+                <img class="img-result mx-[130px] w-[577px] h-[317px] object-contain"
+                  src="img/gold-3.jfif" alt="">
+                <img class="img-result mx-[130px] w-[577px] h-[317px] object-contain"
+                  src="img/gold-4.jfif" alt="">
+              </div>
+              <button
+                class="fullscreen-btn border-none bg-transparent absolute top-[80%] right-[70px] z-[99]">
+                <svg class="full-view w-[30px] h-[30px] duration-300 ease-out hover:scale-110"
+                  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path color="rgba(138, 136, 136, 0.4)"
+                    d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3">
+                  </path>
+                </svg>
+                <svg class="min-view hidden w-[30px] h-[30px] duration-300 ease-out hover:scale-110"
+                  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path color="rgba(138, 136, 136, 0.4)"
+                    d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3M3 16h3a2 2 0 0 1 2 2v3">
+                  </path>
+                </svg>
+              </button>
+            </div>
+            <div class="product-choose">
+              <button data-img="0"
+                class="img-choose__btn w-[100px] h-[100px] bg-transparent border border-transparent rounded-xl p-[auto] hover:border-black img--active">
+                <img src="img/gold-1.jfif" alt=""
+                  class="img-btn__img w-[88px] h-[88px] object-contain">
+              </button>
+              <button data-img="1"
+                class="img-choose__btn w-[100px] h-[100px] bg-transparent border border-transparent rounded-xl p-[auto] hover:border-black">
+                <img src="img/gold-2.jfif" alt=""
+                  class="img-btn__img w-[88px] h-[88px] object-contain">
+              </button>
+              <button data-img="2"
+                class="img-choose__btn w-[100px] h-[100px] bg-transparent border border-transparent rounded-xl p-[auto] hover:border-black">
+                <img src="img/gold-3.jfif" alt=""
+                  class="img-btn__img w-[88px] h-[88px] object-contain">
+              </button>
+              <button data-img="3"
+                class="img-choose__btn w-[100px] h-[100px] bg-transparent border border-transparent rounded-xl p-[auto] hover:border-black">
+                <img src="img/gold-4.jfif" alt=""
+                  class="img-btn__img w-[88px] h-[88px] object-contain">
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="product-right w-[600px]">
+          <div class="hero-heading__box p-2">
+            <h1 class="hero-right__heading text-[45px] font-semibold">iPhone 14 Pro Max</h1>
+            <div class="hero-text__box text-[30px] font-semibold text-[#555]">
+              <span class="text-memory"></span>
+              <span> </span>
+              <span class="text-color"></span>
+              <span>/</span>
+              <span class="text-sim"></span>
+            </div>
+          </div>
+          <div
+            class="relative mt-[50px] p-2 flex flex-wrap before:content-['Цвета'] before:absolute before:top-[-30px] before:text-[17px] before:font-bold">
+            <button data-color="Gold"
+              class="btn w-[280px] h-[70px] py-[5px] px-[12px] text-[12px] color-btn mr-2 mb-2 btn--active">
+              <span
+                class="hero-color__gold w-6 h-6 rounded-full block bg-[#ffd877] mx-auto mb-[5px]"></span>ЗОЛОТОЙ</button>
+            <button data-color="Silver"
+              class="btn w-[280px] h-[70px] py-[5px] px-[12px] text-[12px] color-btn mr-2 mb-2">
+              <span class="w-6 h-6 rounded-full block bg-[#dde6e8] mx-auto mb-[5px]"></span>СЕРЕБРО</button>
+            <button data-color="Space Black"
+              class="btn w-[280px] h-[70px] py-[5px] px-[12px] text-[12px] mr-2 color-btn">
+              <span class=" w-6 h-6 rounded-full block bg-[#000000] mx-auto mb-[5px]"></span>ЧЕРНЫЙ</button>
+            <button data-color="Deep Purple" class="btn w-[280px] h-[70px] py-[5px] px-[12px] text-[12px] color-btn">
+              <span class=" w-6 h-6 rounded-full block bg-[#8e43ad] mx-auto mb-[5px]"></span>ФИОЛЕТОВЫЙ</button>
+          </div>       
+          <div
+            class="hero-memory__box relative mt-[50px] p-2 before:content-['Емкость'] before:absolute before:top-[-30px] before:text-[17px] before:font-bold">
+            <button data-memory="0"
+              class="btn w-[181px] text-[17px] font-bold memory-btn mr-2 btn--active">128GB</button>
+            <button data-memory="200" class="btn w-[181px] text-[17px] font-bold memory-btn mr-2">256GB</button>
+            <button data-memory="400" class="btn w-[181px] text-[17px] font-bold memory-btn d-none">512GB</button>
+            <button data-memory="600" class="btn w-[181px] text-[17px] font-bold memory-btn d-none mt-2">1TB</button>
+          </div>
+          <div
+          class="relative mt-[50px] p-2 before:content-['SIM'] before:absolute before:top-[-30px] before:text-[17px] before:font-bold">
+          <button data-sim="0" class="btn w-[181px] text-[17px] mr-2 font-bold sim-btn btn--active">ESIM</button>
+          <button data-sim="200" class="btn w-[181px] text-[17px] font-bold sim-btn">SIM</button>
+        </div>
+
+          <div
+            class="hero-count__box ml-[8px] mt-[20px] flex items-center justify-between w-[200px] h-[40px] border border-[#444] rounded-[8px]">
+            <button
+              class="count-btn__minus w-[56px] h-[40px] p-0 rounded-none text-2xl flex items-center justify-center border-r border-r-[#444]">-</button>
+            <span class="count-result text-[23px]"></span>
+            <button
+              class="count-btn__plus w-[56px] h-[40px] p-0 rounded-none text-2xl flex items-center justify-center border-l border-l-[#444]">+</button>
+          </div>
+          <div class="hero-price__box my-5 text-[30px] font-medium p-2">
+            <span class="price-result"></span> <span>сум</span> <br>
+            <span class="deleted-result line-through text-[24px] font-normal"></span> <span
+              class="text-[24px] font-normal">сум</span>
+          </div>
+          <div class="hero-bookmark__box p-2">
+            <button
+              class="hero-bookmrak__btn border-none w-full h-12 p-0 text-white text-[16px] font-normal bg-[#2477ea] rounded-md">Купить в один клик</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="./js/main.js"></script>
+</body>
+
+</html>
