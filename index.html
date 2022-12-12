@@ -19,7 +19,7 @@
 
 <body>
 
-  <main class="main">
+  <main class="main relative">
 
     <section class="mt-5">
 
@@ -117,19 +117,99 @@
               class="count-btn__plus w-[56px] h-[40px] p-0 rounded-none text-2xl flex items-center justify-center border-l border-l-[#444]">+</button>
           </div>
           <div class="my-5 text-[30px] font-medium p-2">
-            <span class="price-result"></span> <span>сум</span> <br>
-            <span class="deleted-result line-through text-[24px] font-normal"></span> <span
-              class="text-[24px] font-normal">сум</span>
+            <span>$</span> <span class="price-result"></span> <br>
+            <span class="text-[24px] font-normal">$</span> <span
+              class="deleted-result line-through text-[24px] font-normal"></span>
           </div>
           <div class="p-2">
             <button
               class="border-none w-full h-12 p-0 text-white text-[16px] font-normal bg-[#2477ea] hover:bg-[#0e3e82] duration-200 ease-out rounded-md">Купить
               в один клик</button>
+            <button
+              class="modal-btn mt-2 border border-[#2477ea] text-[#2477ea] w-full h-12 p-0 hover:text-white text-[16px] font-normal hover:bg-[#2477ea] duration-200 ease-out rounded-md preview-salary">Купить
+              в рассрочку от MacBro</button>
           </div>
         </div>
       </div>
-      
+
     </section>
+
+    <div class="salary-modal hidden w-full h-screen fixed top-0 left-0 z-[999] bg-[#00000080] modal-wrap">
+      <div class="w-[789px] h-screen mx-auto bg-white rounded-md p-8 relative">
+        <button class="absolute top-8 right-8 close-btn text-2xl"><i class="fa-solid fa-xmark"></i></button>
+        <p class="font-bold text-[24px] mb-8">Платежный калькулятор</p>
+        <p class="font-bold text-[18px]">Примечание</p>
+        <div class="w-full p-4 bg-slate-100 rounded-md mt-[10px]">
+          <p>Рассрочка от MacBro предоставляется только на гаджеты, стоимость которых превышает 4 миллион (4 000 000)
+            сумов. Рассрочка не распространяется на аксессуары и запасные части.</p>
+        </div>
+        <div class="mt-[32px] mb-[40px]">
+          <p class="font-semibold text-[16px]">Первоначальный взнос</p>
+          <div class="flex gap-x-[10px] mt-[16px] ">
+            <input id="initialFee" type="number" class="border-2 rounded-md px-[16px] py-[8px] w-[588px]" value="">
+
+            <div class="flex">
+              <input id="procent" type="number" class="border-2 border-r-0 rounded-l-md px-[16px] py-[8px]" value="35">
+              <div class="px-[16px] py-[8px] bg-slate-100 rounded-r-md">%</div>
+            </div>
+          </div>
+          <div class="flex gap-x-[10px] items-center  mt-[6px]">
+            <i class="fa-solid fa-circle-exclamation text-slate-500"></i>
+            <p class="text-[12px] text-slate-500">минимум 5 877 025 сум (35%) / максимум 15 112 350 сум (90%)</p>
+          </div>
+        </div>
+        <div>
+          <div class="flex items-center justify-between">
+            <p class="text-[24px] font-bold">Ежемесячный платеж:</p>
+            <div class="text-[24px] font-bold">
+              <span>$</span> <span class="monthly-payment"></span> 
+            </div>
+          </div>
+          <div class="flex items-center justify-between mt-[10px] mb-[32px]">
+            <p class="text-[18px] font-bold">Общая сумма оплаты:</p>
+            <div class="text-[18px] font-bold">
+              <span>$</span> <span class="all-payment"></span> 
+            </div>
+          </div>
+        </div>
+        <div>
+          <p class="text-[18px] mb-[10px]">Выберите срок рассрочки (месяц)</p>
+          <div class="flex items-center justify-between">
+            <button
+              class="monthly-btn w-[57px] h-[57px] bg-white rounded-md hover:bg-[#06c] hover:text-white duration-200 ease-out btn--activee">1</button>
+            <button
+              class="monthly-btn w-[57px] h-[57px] bg-white rounded-md hover:bg-[#06c] hover:text-white duration-200 ease-out">2</button>
+            <button
+              class="monthly-btn w-[57px] h-[57px] bg-white rounded-md hover:bg-[#06c] hover:text-white duration-200 ease-out">3</button>
+            <button
+              class="monthly-btn w-[57px] h-[57px] bg-white rounded-md hover:bg-[#06c] hover:text-white duration-200 ease-out">4</button>
+            <button
+              class="monthly-btn w-[57px] h-[57px] bg-white rounded-md hover:bg-[#06c] hover:text-white duration-200 ease-out">5</button>
+            <button
+              class="monthly-btn w-[57px] h-[57px] bg-white rounded-md hover:bg-[#06c] hover:text-white duration-200 ease-out">6</button>
+            <button
+              class="monthly-btn w-[57px] h-[57px] bg-white rounded-md hover:bg-[#06c] hover:text-white duration-200 ease-out">7</button>
+            <button
+              class="monthly-btn w-[57px] h-[57px] bg-white rounded-md hover:bg-[#06c] hover:text-white duration-200 ease-out">8</button>
+            <button
+              class="monthly-btn w-[57px] h-[57px] bg-white rounded-md hover:bg-[#06c] hover:text-white duration-200 ease-out">9</button>
+            <button
+              class="monthly-btn w-[57px] h-[57px] bg-white rounded-md hover:bg-[#06c] hover:text-white duration-200 ease-out">10</button>
+            <button
+              class="monthly-btn w-[57px] h-[57px] bg-white rounded-md hover:bg-[#06c] hover:text-white duration-200 ease-out">11</button>
+            <button
+              class="monthly-btn w-[57px] h-[57px] bg-white rounded-md hover:bg-[#06c] hover:text-white duration-200 ease-out">12</button>
+          </div>
+        </div>
+        <div class="mt-[32px] mb-[32px] flex flex-col items-center">
+          <p class="text-center">Остались вопросы? Позвоните нам</p>
+          <a href="#">+998 78 777 20 20</a>
+        </div>
+        <div>
+          <button class="bg-[#06c] text-white rounded-md w-full py-[14px] px-[14px]">Оформить в рассрочку</button>
+        </div>
+      </div>
+    </div>
 
   </main>
 

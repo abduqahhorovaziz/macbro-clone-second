@@ -63,3 +63,8 @@
 .full-screen .product-right {
   display: none;
 }
+
+.btn--activee{
+  background-color: #06c;
+  color: white;
+}

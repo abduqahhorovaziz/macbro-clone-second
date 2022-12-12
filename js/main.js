@@ -86,29 +86,6 @@ const iphoneArr = [
   },
 ];
 
-const prices = {
-  esim128gb: 16791500,
-  sim128gb: 17965500,
-  esim256gb: 18787500,
-  sim256gb: 19257000,
-  esim512gb: 21723000,
-  sim512gb: 22897000,
-  esim1tb: 25245500,
-  sim1tb: 26419500,
-};
-
-const deletedPrices = {
-  esim128gb: 20377500,
-  sim128gb: 21802500,
-  esim256gb: 22800000,
-  sim256gb: 23370000,
-  esim512gb: 26362500,
-  sim512gb: 27787500,
-  esim1tb: 30637500,
-  sim1tb: 32062500,
-};
-
-
 const memoryBtns = document.querySelectorAll(".memory-btn");
 const simBtns = document.querySelectorAll(".sim-btn");
 const countMinus = document.querySelector(".count-btn__minus");
@@ -126,16 +103,26 @@ let priceResult = document.querySelector(".price-result");
 let countResult = document.querySelector(".count-result");
 let deletedResult = document.querySelector(".deleted-result");
 
+const previewSalary = document.querySelector(".preview-salary");
+const closeBtn = document.querySelector(".close-btn");
+const modalWrap = document.querySelector(".modal-wrap");
+
 memoryResult.textContent = "128GB";
 colorResult.textContent = "Gold";
 simResult.textContent = "eSIM";
+
+let salePriceEsim = 999;
+let deletedPriceEsim = 1009;
+
+let salePriceSim = 1009;
+let deletedPriceSim = 1019;
 
 let colorCount = 0;
 let imgInd = 0;
 
 countResult.textContent = 1;
-priceResult.textContent = prices.esim128gb;
-deletedResult.textContent = deletedPrices.esim128gb;
+priceResult.textContent = salePriceEsim;
+deletedResult.textContent = deletedPriceEsim;
 
 let priceResNum = +priceResult.textContent;
 let deletedResNum = +deletedResult.textContent;
@@ -173,16 +160,16 @@ function priceChecking() {
     memoryBtns[0].classList.contains("btn--active") &&
     simBtns[0].classList.contains("btn--active")
   ) {
-    priceResult.textContent = prices.esim128gb;
-    deletedResult.textContent = deletedPrices.esim128gb;
+    priceResult.textContent = salePriceEsim;
+    deletedResult.textContent = deletedPriceEsim;
     simResult.textContent = "eSIM";
     memoryResult.textContent = "128GB";
   } else if (
     memoryBtns[0].classList.contains("btn--active") &&
     simBtns[1].classList.contains("btn--active")
   ) {
-    priceResult.textContent = prices.sim128gb;
-    deletedResult.textContent = deletedPrices.sim128gb;
+    priceResult.textContent = salePriceSim;
+    deletedResult.textContent = deletedPriceSim;
     simResult.textContent = "SIM";
     memoryResult.textContent = "128GB";
   }
@@ -191,16 +178,16 @@ function priceChecking() {
     memoryBtns[1].classList.contains("btn--active") &&
     simBtns[0].classList.contains("btn--active")
   ) {
-    priceResult.textContent = prices.esim256gb;
-    deletedResult.textContent = deletedPrices.esim256gb;
+    priceResult.textContent = salePriceEsim + 100;
+    deletedResult.textContent = deletedPriceEsim + 100;
     simResult.textContent = "eSIM";
     memoryResult.textContent = "256GB";
   } else if (
     memoryBtns[1].classList.contains("btn--active") &&
     simBtns[1].classList.contains("btn--active")
   ) {
-    priceResult.textContent = prices.sim256gb;
-    deletedResult.textContent = deletedPrices.sim256gb;
+    priceResult.textContent = salePriceSim + 100;
+    deletedResult.textContent = deletedPriceSim + 100;
     simResult.textContent = "SIM";
     memoryResult.textContent = "256GB";
   }
@@ -210,16 +197,16 @@ function priceChecking() {
       memoryBtns[2].classList.contains("btn--active") &&
       simBtns[0].classList.contains("btn--active")
     ) {
-      priceResult.textContent = prices.esim512gb;
-      deletedResult.textContent = deletedPrices.esim512gb;
+      priceResult.textContent = salePriceEsim + 200;
+      deletedResult.textContent = deletedPriceEsim + 200;
       simResult.textContent = "eSIM";
       memoryResult.textContent = "512GB";
     } else if (
       memoryBtns[2].classList.contains("btn--active") &&
       simBtns[1].classList.contains("btn--active")
     ) {
-      priceResult.textContent = prices.sim512gb;
-      deletedResult.textContent = deletedPrices.sim512gb;
+      priceResult.textContent = salePriceSim + 200;
+      deletedResult.textContent = deletedPriceSim + 200;
       simResult.textContent = "SIM";
       memoryResult.textContent = "512GB";
     }
@@ -230,16 +217,16 @@ function priceChecking() {
       memoryBtns[3].classList.contains("btn--active") &&
       simBtns[0].classList.contains("btn--active")
     ) {
-      priceResult.textContent = prices.esim1tb;
-      deletedResult.textContent = deletedPrices.esim1tb;
+      priceResult.textContent = salePriceEsim + 300;
+      deletedResult.textContent = deletedPriceEsim + 300;
       simResult.textContent = "eSIM";
       memoryResult.textContent = "1TB";
     } else if (
       memoryBtns[3].classList.contains("btn--active") &&
       simBtns[1].classList.contains("btn--active")
     ) {
-      priceResult.textContent = prices.sim1tb;
-      deletedResult.textContent = deletedPrices.sim1tb;
+      priceResult.textContent = salePriceSim + 300;
+      deletedResult.textContent = deletedPriceSim + 300;
       simResult.textContent = "SIM";
       memoryResult.textContent = "1TB";
     }
@@ -295,9 +282,7 @@ imgChooseBtns.forEach((btn, ind) => {
     imgInd = ind;
     imgResult.src = iphoneArr[colorCount].img[ind];
 
-    if (
-      !document.querySelector(".main").classList.contains("full-screen")
-    ) {
+    if (!document.querySelector(".main").classList.contains("full-screen")) {
       if (imgChooseBtns[0].classList.contains("img--active")) {
         slider.style.transform = `translateX(0)`;
       } else if (imgChooseBtns[1].classList.contains("img--active")) {
@@ -309,9 +294,7 @@ imgChooseBtns.forEach((btn, ind) => {
       }
     }
 
-    if (
-      document.querySelector(".main").classList.contains("full-screen")
-    ) {
+    if (document.querySelector(".main").classList.contains("full-screen")) {
       if (imgChooseBtns[0].classList.contains("img--active")) {
         slider.style.transform = "translateX(-40px)";
       } else if (imgChooseBtns[1].classList.contains("img--active")) {
@@ -357,10 +340,180 @@ colorBtns.forEach((btn, ind) => {
 });
 
 document.querySelector(".fullscreen-btn").addEventListener("click", (evt) => {
-    document.querySelector(".full-view").classList.toggle("hidden");
-    document
-      .querySelector(".min-view")
-      .classList.toggle("hidden");
+  document.querySelector(".full-view").classList.toggle("hidden");
+  document.querySelector(".min-view").classList.toggle("hidden");
 
-    document.querySelector(".main").classList.toggle("full-screen");
+  document.querySelector(".main").classList.toggle("full-screen");
+});
+
+// MODAL
+const modal = document.querySelector(".salary-modal");
+const modalBtn = document.querySelector(".modal-btn");
+const initialPayInput = document.querySelector("#initialFee");
+const procentInput = document.querySelector("#procent");
+let monthlyPaymentResult = document.querySelector(".monthly-payment");
+let allPaymentResult = document.querySelector(".all-payment");
+const monthlyBtns = document.querySelectorAll(".monthly-btn");
+
+previewSalary.addEventListener("click", () => {
+  modal.classList.toggle("hidden");
+});
+
+closeBtn.addEventListener("click", () => {
+  modal.classList.add("hidden");
+});
+
+let newPriceResult = Math.floor(priceResNum + priceResNum * 0.1);
+
+const monthlyPrices = {
+  oneMonth: newPriceResult,
+  twoMonth: newPriceResult + 1 * (priceResNum * 0.1),
+  threeMonth: newPriceResult + 2 * (priceResNum * 0.1),
+  fourMonth: newPriceResult + 3 * (priceResNum * 0.1),
+  fiveMonth: newPriceResult + 4 * (priceResNum * 0.1),
+  sixMonth: newPriceResult + 5 * (priceResNum * 0.1),
+  sevenMonth: newPriceResult + 6 * (priceResNum * 0.1),
+  eightMonth: newPriceResult + 7 * (priceResNum * 0.1),
+  nineMonth: newPriceResult + 8 * (priceResNum * 0.1),
+  tenMonth: newPriceResult + 9 * (priceResNum * 0.1),
+  elevenMonth: newPriceResult + 10 * (priceResNum * 0.1),
+  twelveMonth: newPriceResult + 11 * (priceResNum * 0.1),
+};
+
+monthlyPaymentResult.textContent = Math.floor(monthlyPrices.oneMonth);
+monthlyPaymentResult.textContent = Math.floor(monthlyPrices.twoMonth / 1) - initialPayInput.value;
+initialPayInput.addEventListener("input", () => {
+monthlyPaymentResult.textContent =
+  Math.floor(monthlyPrices.twoMonth / 2) - initialPayInput.value;
+});
+allPaymentResult.textContent = Math.floor(monthlyPrices.oneMonth);
+
+monthlyBtns.forEach((btn) => {
+  btn.addEventListener("click", (evt) => {
+    monthlyBtns[0].classList.remove("btn--activee");
+    monthlyBtns[1].classList.remove("btn--activee");
+    monthlyBtns[2].classList.remove("btn--activee");
+    monthlyBtns[3].classList.remove("btn--activee");
+    monthlyBtns[4].classList.remove("btn--activee");
+    monthlyBtns[5].classList.remove("btn--activee");
+    monthlyBtns[6].classList.remove("btn--activee");
+    monthlyBtns[7].classList.remove("btn--activee");
+    monthlyBtns[8].classList.remove("btn--activee");
+    monthlyBtns[9].classList.remove("btn--activee");
+    monthlyBtns[10].classList.remove("btn--activee");
+    monthlyBtns[11].classList.remove("btn--activee");
+
+    monthlyPaymentResult.textContent = Math.floor(monthlyPrices.oneMonth);
+    allPaymentResult.textContent = Math.floor(monthlyPrices.oneMonth);
+
+    btn.classList.add("btn--activee");
+    paymentCheck();
   });
+});
+
+function paymentCheck() {
+  if (monthlyBtns[1].classList.contains("btn--activee")) {
+    // monthlyPaymentResult.textContent = Math.floor(monthlyPrices.twoMonth / 2);
+    monthlyPaymentResult.textContent =
+      Math.floor(monthlyPrices.twoMonth / 2) - initialPayInput.value;
+    initialPayInput.addEventListener("input", () => {
+      monthlyPaymentResult.textContent =
+        Math.floor(monthlyPrices.twoMonth / 2) - initialPayInput.value;
+    });
+    allPaymentResult.textContent = Math.floor(monthlyPrices.twoMonth);
+  } else if (monthlyBtns[2].classList.contains("btn--activee")) {
+    // monthlyPaymentResult.textContent = Math.floor(monthlyPrices.threeMonth / 3);
+    monthlyPaymentResult.textContent =
+      Math.floor(monthlyPrices.threeMonth / 3) - initialPayInput.value;
+    initialPayInput.addEventListener("input", () => {
+      monthlyPaymentResult.textContent =
+        Math.floor(monthlyPrices.threeMonth / 3) - initialPayInput.value;
+    });
+    allPaymentResult.textContent = Math.floor(monthlyPrices.threeMonth);
+  } else if (monthlyBtns[3].classList.contains("btn--activee")) {
+    // monthlyPaymentResult.textContent = Math.floor(monthlyPrices.fourMonth / 4);
+    monthlyPaymentResult.textContent =
+      Math.floor(monthlyPrices.fourMonth / 4) - initialPayInput.value;
+    initialPayInput.addEventListener("input", () => {
+      monthlyPaymentResult.textContent =
+        Math.floor(monthlyPrices.fourMonth / 4) - initialPayInput.value;
+    });
+    allPaymentResult.textContent = Math.floor(monthlyPrices.fourMonth);
+  } else if (monthlyBtns[4].classList.contains("btn--activee")) {
+    // monthlyPaymentResult.textContent = Math.floor(monthlyPrices.fiveMonth / 5);
+    monthlyPaymentResult.textContent =
+      Math.floor(monthlyPrices.fiveMonth / 5) - initialPayInput.value;
+    initialPayInput.addEventListener("input", () => {
+      monthlyPaymentResult.textContent =
+        Math.floor(monthlyPrices.fiveMonth / 5) - initialPayInput.value;
+    });
+    allPaymentResult.textContent = Math.floor(monthlyPrices.fiveMonth);
+  } else if (monthlyBtns[5].classList.contains("btn--activee")) {
+    // monthlyPaymentResult.textContent = Math.floor(monthlyPrices.sixMonth / 6);
+    monthlyPaymentResult.textContent =
+      Math.floor(monthlyPrices.sixMonth / 6) - initialPayInput.value;
+    initialPayInput.addEventListener("input", () => {
+      monthlyPaymentResult.textContent =
+        Math.floor(monthlyPrices.sixMonth / 6) - initialPayInput.value;
+    });
+    allPaymentResult.textContent = Math.floor(monthlyPrices.sixMonth);
+  } else if (monthlyBtns[6].classList.contains("btn--activee")) {
+    // monthlyPaymentResult.textContent = Math.floor(monthlyPrices.sevenMonth / 7);
+    monthlyPaymentResult.textContent =
+      Math.floor(monthlyPrices.sevenMonth / 7) - initialPayInput.value;
+    initialPayInput.addEventListener("input", () => {
+      monthlyPaymentResult.textContent =
+        Math.floor(monthlyPrices.sevenMonth / 7) - initialPayInput.value;
+    });
+    allPaymentResult.textContent = Math.floor(monthlyPrices.sevenMonth);
+  } else if (monthlyBtns[7].classList.contains("btn--activee")) {
+    // monthlyPaymentResult.textContent = Math.floor(monthlyPrices.eightMonth / 8);
+    monthlyPaymentResult.textContent =
+      Math.floor(monthlyPrices.eightMonth / 8) - initialPayInput.value;
+    initialPayInput.addEventListener("input", () => {
+      monthlyPaymentResult.textContent =
+        Math.floor(monthlyPrices.eightMonth / 8) - initialPayInput.value;
+    });
+    allPaymentResult.textContent = Math.floor(monthlyPrices.eightMonth);
+  } else if (monthlyBtns[8].classList.contains("btn--activee")) {
+    // monthlyPaymentResult.textContent = Math.floor(monthlyPrices.nineMonth / 9);
+    monthlyPaymentResult.textContent =
+      Math.floor(monthlyPrices.nineMonth / 9) - initialPayInput.value;
+    initialPayInput.addEventListener("input", () => {
+      monthlyPaymentResult.textContent =
+        Math.floor(monthlyPrices.nineMonth / 9) - initialPayInput.value;
+    });
+    allPaymentResult.textContent = Math.floor(monthlyPrices.nineMonth);
+  } else if (monthlyBtns[9].classList.contains("btn--activee")) {
+    // monthlyPaymentResult.textContent = Math.floor(monthlyPrices.tenMonth / 10);
+    monthlyPaymentResult.textContent =
+      Math.floor(monthlyPrices.tenMonth / 10) - initialPayInput.value;
+    initialPayInput.addEventListener("input", () => {
+      monthlyPaymentResult.textContent =
+        Math.floor(monthlyPrices.tenMonth / 10) - initialPayInput.value;
+    });
+    allPaymentResult.textContent = Math.floor(monthlyPrices.tenMonth);
+  } else if (monthlyBtns[10].classList.contains("btn--activee")) {
+    // monthlyPaymentResult.textContent = Math.floor(monthlyPrices.elevenMonth / 11);
+    monthlyPaymentResult.textContent =
+      Math.floor(monthlyPrices.elevenMonth / 11) - initialPayInput.value;
+    initialPayInput.addEventListener("input", () => {
+      monthlyPaymentResult.textContent =
+        Math.floor(monthlyPrices.elevenMonth / 11) - initialPayInput.value;
+    });
+    allPaymentResult.textContent = Math.floor(monthlyPrices.elevenMonth);
+  } else if (monthlyBtns[11].classList.contains("btn--activee")) {
+    // monthlyPaymentResult.textContent = Math.floor(monthlyPrices.twelveMonth / 12);
+    monthlyPaymentResult.textContent =
+      Math.floor(monthlyPrices.twelveMonth / 12) - initialPayInput.value;
+    initialPayInput.addEventListener("input", () => {
+      monthlyPaymentResult.textContent =
+        Math.floor(monthlyPrices.twelveMonth / 12) - initialPayInput.value;
+    });
+    allPaymentResult.textContent = Math.floor(monthlyPrices.twelveMonth);
+  }
+}
+
+// initialPayInput.addEventListener("input", function () {
+//   monthlyPaymentResult.textContent = newPriceResult - initialPayInput.value;
+// });
